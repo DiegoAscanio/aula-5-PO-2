@@ -1,0 +1,40 @@
+Sistematização Algoritmo Branch and Bround
+
+0. Defino Z_max = -infinito
+1. Resolva o PI na sua forma relaxada (pelo simplex)
+2. Se as variáveis de decisão da solução relaxada forem inteiras
+2.1 PI Resolvido
+3 Senão
+3.1 Crie uma pilha de problemas lineares a serem resolvidos
+3.2 Adicione o PI ao topo da pilha de problemas a serem resolvidos
+3.3 Desempilhe um problema a ser resolvido (PR) do topo da pilha de problemas a serem resolvidos
+3.4 Resolva PR
+3.5 Se Objetivo PR > Z_max
+3.5.1 Crie uma árvore de particionamento à partir de PR
+3.5.2 Se houver qualquer variável das variáveis de decisão de PR que seja fracional.
+3.5.2.1 Selecione uma X_j qualquer destas variáveis para ser particionada.
+3.5.2.1.1 A partir de PR e da variável X_j selecionada:
+3.5.2.1.2 Crie um subprograma linear de PR adicionando a restrição X_j <= floor(X_j) e adicione este subproblema à esquerda da arvore de particionamento de PR.
+3.5.2.1.3 Crie um subprograma linear de PR adicionando a restrição X_j >= ceil(X_j) e adicione este subproblema à direita da arvore de particionamento de PR.
+3.5.2.1.4 Resolva o subproblema a esquerda e armazene o status de factibilidade do suproblema a esquerda na variavel fact_l
+3.5.2.1.5 Resolva o suproblema à direita e armazene o status de factbilidade do subproblema a direita na variavel fact_r
+3.5.2.1.6 Se fact_l E fact_r
+3.5.2.1.6.1 Se Z_l > Z_r
+3.5.2.1.6.1.1 Empilhe subproblema a direita e depois empilhe subproblema a esquerda na fila de problemas a serem resolvidos
+3.5.2.1.6.2 Senão
+3.5.2.1.6.2.1 Empilhe subproblema a esquerda e depois empilhe subproblema a direita na fila de problemas a serem resolvidos
+3.5.2.1.7 Senão se fact_l
+3.5.2.1.7.1 Empilhe subproblema a esquerda na fila de problemas a serem resolvidos
+3.5.2.1.8 Senão se fact_r
+3.5.2.1.8.1 Empilhe subproblema a direita na fila de problemas a serem resolvidos 
+3.5.2.1.9 Volte ao passo 3.3
+3.5.3 Senão
+3.5.3.1 Aplico os valores das variáveis candidatas em PR
+3.5.3.2 Se Objetivo de PR nas variaveis candidatas > Z_max
+3.5.3.2.1 Z_max = Objetivo de PR nas variáveis candidatas
+3.5.3.2.2 X_max = variaveis_candidatas
+3.5.3.2.3 Volte ao passo 3.3
+3.5.3.3 Senão
+3.5.3.3.1 Volto ao passo 3.3
+3.6 Senão
+3.6.1 Volto ao passo 3.3
