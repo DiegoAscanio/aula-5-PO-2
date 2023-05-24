@@ -217,3 +217,10 @@ Entretanto, não podemos quebrar os (sub) problemas à revelia, pois, poderiamos
 <video src="./3.mp4" controls="controls" width=100%>
 </video>
 
+---
+![bg opacity](./background.png)
+# Algoritmo Branch and Bound - Execução
+
+---
+![bg opacity](./background.png)
+<iframe src="http://localhost:8888/notebooks/branch_and_bound.ipynb" width=100% height=100% ></iframe>
